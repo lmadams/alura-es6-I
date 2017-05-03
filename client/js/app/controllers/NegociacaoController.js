@@ -9,8 +9,14 @@ class NegociacaoController {
 
     adicona(event) {
         event.preventDefault();
+
+        var dataNegoc = new Date(
+            ...this._inputData.value
+                .split('-')
+                .map((item, index) => item - index % 2)
+        );
         let negociacao = new Negociacao(
-            this._inputData.value,
+            dataNegoc,
             this._inputQuantidade.value,
             this._inputValor.value
         );
